@@ -1,12 +1,12 @@
 module.exports = () => {
-  return `// Webpack!
-webpack.config.jsmodule.exports = {
+  return `// webpack.config.js
+module.exports = {
   entry: [
     './src/index.js',
     './src/index.css'
   ],
   output: {
-    path: __dirname,
+    path: __dirname + '/dist',
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -30,9 +30,7 @@ webpack.config.jsmodule.exports = {
             options: {
               modules: true,
               importLoaders: 1,
-              localIdentName: "[name]_[local]_[hash:base64]",
-              sourceMap: true,
-              minimize: true
+              sourceMap: true
             }
           }
         ]

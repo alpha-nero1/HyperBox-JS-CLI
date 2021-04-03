@@ -6,7 +6,9 @@ const readmeContent = require('./resources/readme.content');
 const serverContent = require('./resources/serverjs.content');
 const packageContent = require('./resources/packagejson-content');
 const mainContent = require('./resources/mainbox-content');
-const { logGreen, logYellow } = require('./resources/utils');
+const indexjsContent = require('./resources/indexjs-content');
+const indexCssContent = require('./resources/indexcss-content');
+const { logGreen, logYellow, logLoader } = require('./resources/utils');
 
 module.exports = (args) => {
   const nameArg = args[0];
@@ -29,16 +31,22 @@ module.exports = (args) => {
           fs.writeFile(
             gitIgnorePath, 
             `
-      #.gitignore
-      node_modules
-      npm-debug.log
+#.gitignore
+node_modules
+npm-debug.log
             `,
           () => { })
-          fs.mkdir(`${newAppPath}/public`, () => logGreen('HyperBox: Added /public ✅'));
+          fs.mkdir(`${newAppPath}/public`, () => {
+            logGreen('HyperBox: Added /public ✅');
+            fs.copyFile(__dirname + '/resources/favicon.ico', `${newAppPath}/public/favicon.ico`, (...args) => {
+              logGreen('HyperBox: Added /public/favicon.ico 📦 ✅');
+            })
+          });
           fs.mkdir(`${newAppPath}/src`, () => {
             logGreen('HyperBox: Added /src ✅')
             fs.writeFile(`${newAppPath}/src/index.html`, htmlContent(nameArg), () => {})
-            fs.writeFile(`${newAppPath}/src/index.css`, '', () => {})
+            fs.writeFile(`${newAppPath}/src/index.js`, indexjsContent(nameArg), () => {})
+            fs.writeFile(`${newAppPath}/src/index.css`, indexCssContent(), () => {})
             fs.mkdir(`${newAppPath}/src/main`, () => {
               // Add the main box.
               fs.writeFile(`${newAppPath}/src/main/main.box.js`, mainContent(), () => {
@@ -46,11 +54,14 @@ module.exports = (args) => {
               })
             })
           })
-          fs.writeFile(`${newAppPath}/server.js`, serverContent(), () => logGreen('Added server.js ✅'))
+          fs.writeFile(`${newAppPath}/server.js`, serverContent(), () => logGreen('HyperBox: Added server.js ✅'))
           fs.writeFile(`${newAppPath}/webpack.config.js`, webpackContent(nameArg), () => {
-            logYellow('HyperBox: Adding webpack...')
-            exec(`cd ${newAppPath}; npm install -save webpack webpack-cli webpack-dev-server style-loader css-loader script-loader`, () => {
-              logGreen('HyperBox: Added webpack.')
+            logYellow('HyperBox: Installing dependencies...')
+            const timeout = logLoader();
+            exec(`cd ${newAppPath}; npm i`, () => {
+              clearTimeout(timeout);
+              logGreen('HyperBox: Installed dependencies ✅ ⚡️')
+              fs.mkdir(`${newAppPath}/dist`, () => {});
             });
           })
       });

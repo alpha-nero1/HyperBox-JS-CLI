@@ -1,6 +1,6 @@
 module.exports = () => (
 `class MainBox {
-  _BoxConfig {
+  static _BoxConfig = {
     name: 'MainBox'
   }
 
