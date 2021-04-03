@@ -5,10 +5,10 @@ module.exports = (name) => (
   "description": "A new hyperbox application!",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \\"Error: no test specified\\" && exit 1",
     "start": "node ./server.js"
   },
-  "keywords": [],
+  "keywords": ["${name}", "hyperbox", "hyperbox-js", "JavaScript"],
   "author": "",
   "license": "ISC",
   "dependencies": {
