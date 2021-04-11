@@ -6,7 +6,7 @@ module.exports = (name) => (
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \\"Error: no test specified\\" && exit 1",
     "start": "./node_modules/webpack/bin/webpack.js && node server.js"
   },
   "keywords": [
