@@ -5,15 +5,15 @@ module.exports = (name) => (
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>${name}</title>
+    <title>new</title>
+    <link href="./index.css" rel="stylesheet">
+    <!-- Google font, remove if unwanted -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+    <!-- Google font end -->
   </head>
   <body>
-    <div>
-      <h1 class="title">Welcome to ${name}</h1>
-      <p>Start building away with HyperBox-JS!</p>
-      <a href="https://www.npmjs.com/package/hyperbox-js">Find out more about hyperbox-js</p>
-    </div>
-    <script src="../dist/bundle.js"></script>
+    <div id="root"></div>
   </body>
 </html>
   `

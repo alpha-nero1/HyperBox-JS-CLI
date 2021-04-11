@@ -1,26 +1,48 @@
 module.exports = () => {
   return `// webpack.config.js
+const path = require('path');
+
 module.exports = {
+  mode: 'development',
   entry: [
     './src/index.js',
     './src/index.css'
   ],
+  resolve: {
+    modules: ['node_modules']
+  },
   output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: { minimize: true }
+          }
+        ]
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        resolve: {
+          fullySpecified: false
+        },
         use: {
-          loader: "script-loader"
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-proposal-class-properties']
+          }
         }
       },
       {
-        test: /\.css$/,
+        test: /.css$/,
         use: [
           {
             loader: "style-loader"
@@ -37,6 +59,6 @@ module.exports = {
       }
     ]
   }
-};
-  `
+};  
+  `;
 };

@@ -1,7 +1,10 @@
 module.exports = () => (
-`.title {
-  color: blue;
-  font-size: 16px;
+`html, body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.title {
+  font-size: 32px;
 }
 `
 );

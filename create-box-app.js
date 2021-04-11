@@ -8,6 +8,7 @@ const packageContent = require('./resources/packagejson-content');
 const mainContent = require('./resources/mainbox-content');
 const indexjsContent = require('./resources/indexjs-content');
 const indexCssContent = require('./resources/indexcss-content');
+const gitignoreContent = require('./resources/gitignore-content');
 const { logGreen, logYellow, logLoader } = require('./resources/utils');
 
 module.exports = (args) => {
@@ -21,7 +22,9 @@ module.exports = (args) => {
       logGreen('HyperBox: initialised git ✅');
       fs.writeFile(`${newAppPath}/package.json`, packageContent(nameArg), () => {})
       logYellow('HyperBox: installing hyperbox-js...')
+      const stopLoader = logLoader();
       exec(`cd ${newAppPath}; npm install --save hyperbox-js`, () => {
+        stopLoader();
         logGreen('HyperBox: hyperbox installed. ✅');
         // Make readme.
         const readmePath = `${newAppPath}/README.md`;
@@ -30,11 +33,7 @@ module.exports = (args) => {
           // Make gitignore.
           fs.writeFile(
             gitIgnorePath, 
-            `
-#.gitignore
-node_modules
-npm-debug.log
-            `,
+            gitignoreContent(nameArg),
           () => { })
           fs.mkdir(`${newAppPath}/public`, () => {
             logGreen('HyperBox: Added /public ✅');
@@ -57,9 +56,9 @@ npm-debug.log
           fs.writeFile(`${newAppPath}/server.js`, serverContent(), () => logGreen('HyperBox: Added server.js ✅'))
           fs.writeFile(`${newAppPath}/webpack.config.js`, webpackContent(nameArg), () => {
             logYellow('HyperBox: Installing dependencies...')
-            const timeout = logLoader();
+            const stopLoadingTwo = logLoader();
             exec(`cd ${newAppPath}; npm i`, () => {
-              clearTimeout(timeout);
+              stopLoadingTwo()
               logGreen('HyperBox: Installed dependencies ✅ ⚡️')
               fs.mkdir(`${newAppPath}/dist`, () => {});
             });
