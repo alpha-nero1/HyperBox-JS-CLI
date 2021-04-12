@@ -1,10 +1,8 @@
 module.exports = () => (
-`import { BoxCluster, HyperBoxInnerCore } from 'hyperbox-js';
-import { HyperBoxCore } from 'hyperbox-js/src';
+`import { BoxCluster } from 'hyperbox-js';
+import { HyperBoxCore } from 'hyperbox-js';
 import { MainBox } from './main/main.box';
 
-// Load DOM into hyperbox.
-HyperBoxInnerCore.LoadDOM(window, document);
 // Create your first cluster...
 const cluster = new BoxCluster([
   MainBox
