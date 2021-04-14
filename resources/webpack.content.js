@@ -52,18 +52,9 @@ module.exports = {
         ]
       },
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        resolve: {
-          fullySpecified: false
-        },
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-proposal-class-properties']
-          }
-        }
+        test: /\.ts?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
         test: /.css$/,

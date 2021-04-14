@@ -29,9 +29,8 @@ module.exports = (name) => (
   "devDependencies": {
     "webpack": "^5.30.0",
     "webpack-cli": "^4.6.0",
-    "@babel/core": "^7.13.14",
-    "@babel/preset-env": "^7.13.12",
-    "babel-loader": "^8.2.2"
+    "ts-loader": "^8.1.0",
+    "typescript": "^4.2.4",
   }
 }
 `

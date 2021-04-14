@@ -44,16 +44,16 @@ module.exports = (args) => {
           fs.mkdir(`${newAppPath}/src`, () => {
             logGreen('HyperBox: Added /src ✅')
             fs.writeFile(`${newAppPath}/src/index.html`, htmlContent(nameArg), () => {})
-            fs.writeFile(`${newAppPath}/src/index.js`, indexjsContent(nameArg), () => {})
+            fs.writeFile(`${newAppPath}/src/index.ts`, indexjsContent(nameArg), () => {})
             fs.writeFile(`${newAppPath}/src/index.css`, indexCssContent(), () => {})
             fs.mkdir(`${newAppPath}/src/main`, () => {
               // Add the main box.
-              fs.writeFile(`${newAppPath}/src/main/main.box.js`, mainContent(), () => {
+              fs.writeFile(`${newAppPath}/src/main/main.box.ts`, mainContent(), () => {
                 logGreen('HyperBox: Added your first box 📦')
               })
             })
           })
-          fs.writeFile(`${newAppPath}/server.js`, serverContent(), () => logGreen('HyperBox: Added server.js ✅'))
+          fs.writeFile(`${newAppPath}/server.ts`, serverContent(), () => logGreen('HyperBox: Added server.ts ✅'))
           fs.writeFile(`${newAppPath}/webpack.config.js`, webpackContent(nameArg), () => {
             logYellow('HyperBox: Installing dependencies...')
             const stopLoadingTwo = logLoader();
