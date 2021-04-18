@@ -18,15 +18,14 @@ module.exports = (args) => {
   // Make new app folder with name.
   const newAppPath = path.join(process.cwd(), nameArg);
   fs.mkdir(nameArg, (mkdirErr) => {
-    console.log(mkdirErr);
     if (mkdirErr) throw new Error('Could not create project file, perhaps it already exists?');
-    exec(`cd ${newAppPath}; npm init --yes; git init`, (err, stdout, stderr) => {
+    exec(`cd ${newAppPath} && npm init --yes && git init`, (err, stdout, stderr) => {
       logGreen('HyperBox: initialised npm ✅');
       logGreen('HyperBox: initialised git ✅');
       fs.writeFile(`${newAppPath}/package.json`, packageContent(nameArg), () => {})
       logYellow('HyperBox: installing hyperbox-js...');
       const stopLoader = logLoader();
-      exec(`cd ${newAppPath}; npm install --save hyperbox-js`, () => {
+      exec(`cd ${newAppPath} && npm install --save hyperbox-js`, () => {
         stopLoader();
         logGreen('HyperBox: hyperbox installed. ✅');
         // Make readme.
