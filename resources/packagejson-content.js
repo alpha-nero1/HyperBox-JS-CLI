@@ -21,7 +21,7 @@ module.exports = (name) => (
     "express-favicon": "^2.0.1",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.1",
-    "hyperbox-js": "^1.0.26",
+    "hyperbox-js": "^1.0.27",
     "script-loader": "^0.7.2",
     "style-loader": "^2.0.0",
     "webpack-dev-server": "^3.11.2"
