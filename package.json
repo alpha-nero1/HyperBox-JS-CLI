@@ -1,6 +1,6 @@
 {
   "name": "hyperbox-js-cli",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Command line tools for hyperbox apps",
   "main": "index.js",
   "bin": {
