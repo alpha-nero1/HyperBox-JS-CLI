@@ -7,6 +7,7 @@ const readmeContent = require('./resources/readme.content');
 const serverContent = require('./resources/serverjs.content');
 const packageContent = require('./resources/packagejson-content');
 const mainContent = require('./resources/mainbox-content');
+const mainLessContent = require('./resources/mainbox-less-content');
 const indexjsContent = require('./resources/indexjs-content');
 const indexCssContent = require('./resources/indexcss-content');
 const gitignoreContent = require('./resources/gitignore-content');
@@ -59,6 +60,7 @@ module.exports = (args) => {
               // Add the main box.
               fs.writeFile(`${newAppPath}/src/main/main.box.ts`, mainContent(), () => {
                 logGreen('HyperBox: Added your first box 📦')
+                fs.writeFile(`${newAppPath}/src/main/main.box.less`, mainLessContent(), () => {});
               });
             });
           });

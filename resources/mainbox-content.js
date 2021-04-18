@@ -1,5 +1,6 @@
 module.exports = () => (
 `import { Box } from 'hyperbox-js';
+import './main.box.less';
 
 // Our main box!
 export class MainBox extends Box {
