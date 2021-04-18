@@ -26,7 +26,9 @@ module.exports = (name) => (
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.4",
     "webpack": "^5.30.0",
-    "webpack-cli": "^4.6.0"
+    "webpack-cli": "^4.6.0",
+    "less": "^4.1.1",
+    "style-loader": "^2.0.0"
   }
 }
 `
