@@ -13,12 +13,15 @@ module.exports = {
     './src/index.css'
   ],
   resolve: {
-    modules: ['node_modules']
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'src')
+    ],
+    extensions: ['.ts', '.js', '.json']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    filename: 'bundle.js'
   },
   externals: {
     'express-favicon': {

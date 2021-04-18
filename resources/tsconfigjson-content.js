@@ -4,7 +4,8 @@ module.exports = () => `{
     "module": "es6",
     "target": "es6",
     "allowJs": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "moduleResolution": "node"
   }
 }
 `
