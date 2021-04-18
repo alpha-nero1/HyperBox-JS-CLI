@@ -21,16 +21,16 @@ module.exports = (name) => (
     "express-favicon": "^2.0.1",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.1",
-    "hyperbox-js": "^1.0.18",
+    "hyperbox-js": "^1.0.25",
     "script-loader": "^0.7.2",
     "style-loader": "^2.0.0",
     "webpack-dev-server": "^3.11.2"
   },
   "devDependencies": {
-    "webpack": "^5.30.0",
-    "webpack-cli": "^4.6.0",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.4",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
   }
 }
 `

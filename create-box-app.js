@@ -9,6 +9,7 @@ const mainContent = require('./resources/mainbox-content');
 const indexjsContent = require('./resources/indexjs-content');
 const indexCssContent = require('./resources/indexcss-content');
 const gitignoreContent = require('./resources/gitignore-content');
+const tsconfigContent = require('./resources/tsconfigjson-content');
 const { logGreen, logYellow, logLoader } = require('./resources/utils');
 
 module.exports = (args) => {
@@ -30,11 +31,18 @@ module.exports = (args) => {
         const readmePath = `${newAppPath}/README.md`;
         fs.writeFile(readmePath, readmeContent(nameArg), () => {
           const gitIgnorePath = `${newAppPath}/.gitignore`;
+          const tsconfPath = `${newAppPath}/tsconfig.json`;
           // Make gitignore.
           fs.writeFile(
             gitIgnorePath, 
             gitignoreContent(nameArg),
           () => { })
+          // Make gitignore.
+          fs.writeFile(
+            tsconfPath,
+            tsconfigContent(),
+            () => {}
+          );
           fs.mkdir(`${newAppPath}/public`, () => {
             logGreen('HyperBox: Added /public ✅');
             fs.copyFile(__dirname + '/resources/favicon.ico', `${newAppPath}/public/favicon.ico`, (...args) => {
@@ -53,7 +61,7 @@ module.exports = (args) => {
               })
             })
           })
-          fs.writeFile(`${newAppPath}/server.ts`, serverContent(), () => logGreen('HyperBox: Added server.ts ✅'))
+          fs.writeFile(`${newAppPath}/server.js`, serverContent(), () => logGreen('HyperBox: Added server.ts ✅'))
           fs.writeFile(`${newAppPath}/webpack.config.js`, webpackContent(nameArg), () => {
             logYellow('HyperBox: Installing dependencies...')
             const stopLoadingTwo = logLoader();
